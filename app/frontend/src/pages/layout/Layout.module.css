@@ -5,7 +5,7 @@
 }
 
 .header {
-    background-color: #222222;
+    background-color: #007fc9;
     color: #f2f2f2;
 }
 
@@ -23,6 +23,7 @@
     align-items: center;
     color: #f2f2f2;
     text-decoration: none;
+    flex-grow: 1;
 }
 
 .headerLogo {
@@ -39,7 +40,7 @@
     z-index: 100;
     display: none;
     flex-direction: column;
-    background-color: #222222;
+    background-color: #007fc9;
     position: absolute;
     top: 2.7rem;
     right: 0;
@@ -55,7 +56,7 @@
 
 .headerNavPageLink {
     padding: 1rem;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #007fc9;
     text-align: right;
     color: #f2f2f2;
     text-decoration: none;
