@@ -33,11 +33,13 @@
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 1.875rem;
+    color: #f2f2f2;
 }
 
 .chatEmptyStateSubtitle {
     font-weight: 600;
     margin-bottom: 0.625rem;
+    color: #f2f2f2;
 }
 
 .chatMessageStream {
@@ -70,7 +72,8 @@
     padding: 1rem;
     width: 100%;
     max-width: 64.25rem;
-    background: #f2f2f2;
+    background: #1e1e1e;
+    border-radius: 1rem;
 }
 
 .chatAnalysisPanel {
