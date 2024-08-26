@@ -26,6 +26,7 @@
     font-size: 2.75rem;
     font-weight: 600;
     margin-top: 0;
+    color: #f2f2f2;
 }
 
 .askQuestionInput {
@@ -72,10 +73,11 @@
 @media (min-width: 992px) {
     .askTitle {
         font-size: 4rem;
-        margin-top: 8.125rem;
+        margin-top: 1.125rem;
     }
 
     .commandsContainer {
+        justify-content: flex-end;
         padding-left: 0;
         padding-right: 0;
     }
