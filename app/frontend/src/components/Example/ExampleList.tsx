@@ -2,7 +2,11 @@ import { Example } from "./Example";
 
 import styles from "./Example.module.css";
 
-const DEFAULT_EXAMPLES: string[] = ["What is Sanlam's IT Strategy?", "How was Retail Affluent's performance in 2023?", "What savings products do Sanlam sell?"];
+const DEFAULT_EXAMPLES: string[] = [
+    "What is Sanlam's IT Strategy?",
+    "How was Retail Affluent's performance in 2023?",
+    "What savings products does Sanlam sell?"
+];
 
 const GPT4V_EXAMPLES: string[] = [
     "Compare the impact of interest rates and GDP in financial markets.",
