@@ -78,14 +78,14 @@ export const AnalysisPanel = ({ answer, activeTab, activeCitation, citationHeigh
         >
             <PivotItem
                 itemKey={AnalysisPanelTabs.ThoughtProcessTab}
-                headerText="Thought process"
+                headerText="Thought Process"
                 headerButtonProps={isDisabledThoughtProcessTab ? pivotItemDisabledStyle : undefined}
             >
                 <ThoughtProcess thoughts={answer.context.thoughts || []} />
             </PivotItem>
             <PivotItem
                 itemKey={AnalysisPanelTabs.SupportingContentTab}
-                headerText="Supporting content"
+                headerText="Supporting Content"
                 headerButtonProps={isDisabledSupportingContentTab ? pivotItemDisabledStyle : undefined}
             >
                 <SupportingContent supportingContent={answer.context.data_points} />
