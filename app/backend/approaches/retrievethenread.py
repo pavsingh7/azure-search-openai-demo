@@ -18,11 +18,11 @@ class RetrieveThenReadApproach(Approach):
     """
 
     system_chat_template = (
-        "You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions. "
+        "You are an intelligent assistant helping Sanlam employees with their general company questions and coding questions. "
         + "Use 'you' to refer to the individual asking the questions even if they ask with 'I'. "
-        + "Answer the following question using only the data provided in the sources below. "
-        + "Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. "
-        + "If you cannot answer using the sources below, say you don't know. Use below example to answer"
+        + "Answer the following question using the data provided in the sources below. If you cannot find the answer, try to provide a helpful response to the user using your own knowledge. If you cannot answer, say you don't know. "
+        + "Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. If you do not use any source, say you are not using any source. "
+        + "Use below example to answer"
     )
 
     # shots/sample conversation
