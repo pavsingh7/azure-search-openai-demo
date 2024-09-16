@@ -1,5 +1,5 @@
 import { Stack, Pivot, PivotItem } from "@fluentui/react";
-
+import { useTranslation } from "react-i18next";
 import styles from "./AnalysisPanel.module.css";
 
 import { SupportingContent } from "../SupportingContent";
@@ -30,6 +30,7 @@ export const AnalysisPanel = ({ answer, activeTab, activeCitation, citationHeigh
     const [citation, setCitation] = useState("");
 
     const client = useLogin ? useMsal().instance : undefined;
+    const { t } = useTranslation();
 
     const fetchCitation = async () => {
         const token = client ? await getToken(client) : undefined;
@@ -86,13 +87,14 @@ export const AnalysisPanel = ({ answer, activeTab, activeCitation, citationHeigh
             <PivotItem
                 itemKey={AnalysisPanelTabs.SupportingContentTab}
                 headerText="Supporting Content"
+
                 headerButtonProps={isDisabledSupportingContentTab ? pivotItemDisabledStyle : undefined}
             >
                 <SupportingContent supportingContent={answer.context.data_points} />
             </PivotItem>
             <PivotItem
                 itemKey={AnalysisPanelTabs.CitationTab}
-                headerText="Citation"
+                headerText={t("headerTexts.citation")}
                 headerButtonProps={isDisabledCitationTab ? pivotItemDisabledStyle : undefined}
             >
                 {renderFileViewer()}

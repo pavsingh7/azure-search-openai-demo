@@ -1,4 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 import { Checkbox, Panel, DefaultButton, Spinner, TextField, ICheckboxProps, ITextFieldProps } from "@fluentui/react";
 import { useId } from "@fluentui/react-hooks";
 import answerIcon from "/public/256_classic.png";
@@ -15,12 +17,12 @@ import { SettingsButton } from "../../components/SettingsButton/SettingsButton";
 import { useLogin, getToken, requireAccessControl, checkLoggedIn } from "../../authConfig";
 import { VectorSettings } from "../../components/VectorSettings";
 import { GPT4VSettings } from "../../components/GPT4VSettings";
-import { toolTipText } from "../../i18n/tooltips.js";
 import { UploadFile } from "../../components/UploadFile";
 
 import { useMsal } from "@azure/msal-react";
 import { TokenClaimsDisplay } from "../../components/TokenClaimsDisplay";
 import { LoginContext } from "../../loginContext";
+import { LanguagePicker } from "../../i18n/LanguagePicker";
 
 export function Component(): JSX.Element {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
@@ -46,6 +48,7 @@ export function Component(): JSX.Element {
     const [showSemanticRankerOption, setShowSemanticRankerOption] = useState<boolean>(false);
     const [showVectorOption, setShowVectorOption] = useState<boolean>(false);
     const [showUserUpload, setShowUserUpload] = useState<boolean>(false);
+    const [showLanguagePicker, setshowLanguagePicker] = useState<boolean>(false);
     const [showSpeechInput, setShowSpeechInput] = useState<boolean>(false);
     const [showSpeechOutputBrowser, setShowSpeechOutputBrowser] = useState<boolean>(false);
     const [showSpeechOutputAzure, setShowSpeechOutputAzure] = useState<boolean>(false);
@@ -84,6 +87,7 @@ export function Component(): JSX.Element {
                 setRetrievalMode(RetrievalMode.Text);
             }
             setShowUserUpload(config.showUserUpload);
+            setshowLanguagePicker(config.showLanguagePicker);
             setShowSpeechInput(config.showSpeechInput);
             setShowSpeechOutputBrowser(config.showSpeechOutputBrowser);
             setShowSpeechOutputAzure(config.showSpeechOutputAzure);
@@ -130,6 +134,7 @@ export function Component(): JSX.Element {
                         vector_fields: vectorFieldList,
                         use_gpt4v: useGPT4V,
                         gpt4v_input: gpt4vInput,
+                        language: i18n.language,
                         ...(seed !== null ? { seed: seed } : {})
                     }
                 },
@@ -234,9 +239,14 @@ export function Component(): JSX.Element {
     const useOidSecurityFilterFieldId = useId("useOidSecurityFilterField");
     const useGroupsSecurityFilterId = useId("useGroupsSecurityFilter");
     const useGroupsSecurityFilterFieldId = useId("useGroupsSecurityFilterField");
+    const { t, i18n } = useTranslation();
 
     return (
         <div className={styles.askContainer}>
+            {/* Setting the page title using react-helmet-async */}
+            <Helmet>
+                <title>{t("pageTitle")}</title>
+            </Helmet>
             <div className={styles.askTopSection}>
                 <div className={styles.commandsContainer}>
                     {showUserUpload && <UploadFile className={styles.commandButton} disabled={loggedIn} />}
@@ -255,8 +265,13 @@ export function Component(): JSX.Element {
                 </div>
             </div>
             <div className={styles.askBottomSection}>
-                {isLoading && <Spinner label="Generating answer" />}
-                {!lastQuestionRef.current && <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />}
+                {isLoading && <Spinner label={t("generatingAnswer")} />}
+                {!lastQuestionRef.current && (
+                    <div className={styles.askTopSection}>
+                        {showLanguagePicker && <LanguagePicker onLanguageChange={newLang => i18n.changeLanguage(newLang)} />}
+                        <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />
+                    </div>
+                )}
                 {!isLoading && answer && !error && (
                     <div className={styles.askAnswerContainer}>
                         <Answer
@@ -290,32 +305,32 @@ export function Component(): JSX.Element {
             </div>
 
             <Panel
-                headerText="Configure answer generation"
+                headerText={t("labels.headerText")}
                 isOpen={isConfigPanelOpen}
                 isBlocking={false}
                 onDismiss={() => setIsConfigPanelOpen(false)}
-                closeButtonAriaLabel="Close"
-                onRenderFooterContent={() => <DefaultButton onClick={() => setIsConfigPanelOpen(false)}>Close</DefaultButton>}
+                closeButtonAriaLabel={t("labels.closeButton")}
+                onRenderFooterContent={() => <DefaultButton onClick={() => setIsConfigPanelOpen(false)}>{t("labels.closeButton")}</DefaultButton>}
                 isFooterAtBottom={true}
             >
                 <TextField
                     id={promptTemplateFieldId}
                     className={styles.chatSettingsSeparator}
                     defaultValue={promptTemplate}
-                    label="Override prompt template"
+                    label={t("labels.promptTemplate")}
                     multiline
                     autoAdjustHeight
                     onChange={onPromptTemplateChange}
                     aria-labelledby={promptTemplateId}
                     onRenderLabel={(props: ITextFieldProps | undefined) => (
-                        <HelpCallout labelId={promptTemplateId} fieldId={promptTemplateFieldId} helpText={toolTipText.promptTemplate} label={props?.label} />
+                        <HelpCallout labelId={promptTemplateId} fieldId={promptTemplateFieldId} helpText={t("helpTexts.promptTemplate")} label={props?.label} />
                     )}
                 />
 
                 <TextField
                     id={temperatureFieldId}
                     className={styles.chatSettingsSeparator}
-                    label="Temperature"
+                    label={t("labels.temperature")}
                     type="number"
                     min={0}
                     max={1}
@@ -324,27 +339,27 @@ export function Component(): JSX.Element {
                     onChange={onTemperatureChange}
                     aria-labelledby={temperatureId}
                     onRenderLabel={(props: ITextFieldProps | undefined) => (
-                        <HelpCallout labelId={temperatureId} fieldId={temperatureFieldId} helpText={toolTipText.temperature} label={props?.label} />
+                        <HelpCallout labelId={temperatureId} fieldId={temperatureFieldId} helpText={t("helpTexts.temperature")} label={props?.label} />
                     )}
                 />
 
                 <TextField
                     id={seedFieldId}
                     className={styles.chatSettingsSeparator}
-                    label="Seed"
+                    label={t("labels.seed")}
                     type="text"
                     defaultValue={seed?.toString() || ""}
                     onChange={onSeedChange}
                     aria-labelledby={seedId}
                     onRenderLabel={(props: ITextFieldProps | undefined) => (
-                        <HelpCallout labelId={seedId} fieldId={seedFieldId} helpText={toolTipText.seed} label={props?.label} />
+                        <HelpCallout labelId={seedId} fieldId={seedFieldId} helpText={t("helpTexts.seed")} label={props?.label} />
                     )}
                 />
 
                 <TextField
                     id={searchScoreFieldId}
                     className={styles.chatSettingsSeparator}
-                    label="Minimum search score"
+                    label={t("labels.minimumSearchScore")}
                     type="number"
                     min={0}
                     step={0.01}
@@ -352,7 +367,7 @@ export function Component(): JSX.Element {
                     onChange={onMinimumSearchScoreChange}
                     aria-labelledby={searchScoreId}
                     onRenderLabel={(props: ITextFieldProps | undefined) => (
-                        <HelpCallout labelId={searchScoreId} fieldId={searchScoreFieldId} helpText={toolTipText.searchScore} label={props?.label} />
+                        <HelpCallout labelId={searchScoreId} fieldId={searchScoreFieldId} helpText={t("helpTexts.searchScore")} label={props?.label} />
                     )}
                 />
 
@@ -360,7 +375,7 @@ export function Component(): JSX.Element {
                     <TextField
                         id={rerankerScoreFieldId}
                         className={styles.chatSettingsSeparator}
-                        label="Minimum reranker score"
+                        label={t("labels.minimumRerankerScore")}
                         type="number"
                         min={1}
                         max={4}
@@ -369,7 +384,12 @@ export function Component(): JSX.Element {
                         onChange={onMinimumRerankerScoreChange}
                         aria-labelledby={rerankerScoreId}
                         onRenderLabel={(props: ITextFieldProps | undefined) => (
-                            <HelpCallout labelId={rerankerScoreId} fieldId={rerankerScoreFieldId} helpText={toolTipText.rerankerScore} label={props?.label} />
+                            <HelpCallout
+                                labelId={rerankerScoreId}
+                                fieldId={rerankerScoreFieldId}
+                                helpText={t("helpTexts.rerankerScore")}
+                                label={props?.label}
+                            />
                         )}
                     />
                 )}
@@ -377,7 +397,7 @@ export function Component(): JSX.Element {
                 <TextField
                     id={retrieveCountFieldId}
                     className={styles.chatSettingsSeparator}
-                    label="Retrieve this many search results:"
+                    label={t("labels.retrieveCount")}
                     type="number"
                     min={1}
                     max={50}
@@ -385,19 +405,24 @@ export function Component(): JSX.Element {
                     onChange={onRetrieveCountChange}
                     aria-labelledby={retrieveCountId}
                     onRenderLabel={(props: ITextFieldProps | undefined) => (
-                        <HelpCallout labelId={retrieveCountId} fieldId={retrieveCountFieldId} helpText={toolTipText.retrieveNumber} label={props?.label} />
+                        <HelpCallout labelId={retrieveCountId} fieldId={retrieveCountFieldId} helpText={t("helpTexts.retrieveNumber")} label={props?.label} />
                     )}
                 />
 
                 <TextField
                     id={excludeCategoryFieldId}
                     className={styles.chatSettingsSeparator}
-                    label="Exclude category"
+                    label={t("labels.excludeCategory")}
                     defaultValue={excludeCategory}
                     onChange={onExcludeCategoryChanged}
                     aria-labelledby={excludeCategoryId}
                     onRenderLabel={(props: ITextFieldProps | undefined) => (
-                        <HelpCallout labelId={excludeCategoryId} fieldId={excludeCategoryFieldId} helpText={toolTipText.excludeCategory} label={props?.label} />
+                        <HelpCallout
+                            labelId={excludeCategoryId}
+                            fieldId={excludeCategoryFieldId}
+                            helpText={t("helpTexts.excludeCategory")}
+                            label={props?.label}
+                        />
                     )}
                 />
 
@@ -407,14 +432,14 @@ export function Component(): JSX.Element {
                             id={semanticRankerFieldId}
                             className={styles.chatSettingsSeparator}
                             checked={useSemanticRanker}
-                            label="Use semantic ranker for retrieval"
+                            label={t("labels.useSemanticRanker")}
                             onChange={onUseSemanticRankerChange}
                             aria-labelledby={semanticRankerId}
                             onRenderLabel={(props: ICheckboxProps | undefined) => (
                                 <HelpCallout
                                     labelId={semanticRankerId}
                                     fieldId={semanticRankerFieldId}
-                                    helpText={toolTipText.useSemanticReranker}
+                                    helpText={t("helpTexts.useSemanticReranker")}
                                     label={props?.label}
                                 />
                             )}
@@ -424,7 +449,7 @@ export function Component(): JSX.Element {
                             id={semanticCaptionsFieldId}
                             className={styles.chatSettingsSeparator}
                             checked={useSemanticCaptions}
-                            label="Use semantic captions"
+                            label={t("labels.useSemanticCaptions")}
                             onChange={onUseSemanticCaptionsChange}
                             disabled={!useSemanticRanker}
                             aria-labelledby={semanticCaptionsId}
@@ -432,7 +457,7 @@ export function Component(): JSX.Element {
                                 <HelpCallout
                                     labelId={semanticCaptionsId}
                                     fieldId={semanticCaptionsFieldId}
-                                    helpText={toolTipText.useSemanticCaptions}
+                                    helpText={t("helpTexts.useSemanticCaptions")}
                                     label={props?.label}
                                 />
                             )}
@@ -466,7 +491,7 @@ export function Component(): JSX.Element {
                             id={useOidSecurityFilterFieldId}
                             className={styles.chatSettingsSeparator}
                             checked={useOidSecurityFilter || requireAccessControl}
-                            label="Use oid security filter"
+                            label={t("labels.useOidSecurityFilter")}
                             disabled={!loggedIn || requireAccessControl}
                             onChange={onUseOidSecurityFilterChange}
                             aria-labelledby={useOidSecurityFilterId}
@@ -474,7 +499,7 @@ export function Component(): JSX.Element {
                                 <HelpCallout
                                     labelId={useOidSecurityFilterId}
                                     fieldId={useOidSecurityFilterFieldId}
-                                    helpText={toolTipText.useOidSecurityFilter}
+                                    helpText={t("helpTexts.useOidSecurityFilter")}
                                     label={props?.label}
                                 />
                             )}
@@ -483,7 +508,7 @@ export function Component(): JSX.Element {
                             id={useGroupsSecurityFilterFieldId}
                             className={styles.chatSettingsSeparator}
                             checked={useGroupsSecurityFilter || requireAccessControl}
-                            label="Use groups security filter"
+                            label={t("labels.useGroupsSecurityFilter")}
                             disabled={!loggedIn || requireAccessControl}
                             onChange={onUseGroupsSecurityFilterChange}
                             aria-labelledby={useGroupsSecurityFilterId}
@@ -491,7 +516,7 @@ export function Component(): JSX.Element {
                                 <HelpCallout
                                     labelId={useGroupsSecurityFilterId}
                                     fieldId={useGroupsSecurityFilterFieldId}
-                                    helpText={toolTipText.useGroupsSecurityFilter}
+                                    helpText={t("helpTexts.useGroupsSecurityFilter")}
                                     label={props?.label}
                                 />
                             )}
