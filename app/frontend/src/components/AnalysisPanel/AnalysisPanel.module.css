@@ -16,7 +16,7 @@
     margin: auto;
     margin-left: 1.25em;
     min-height: 3.125em;
-    border-left: 0.0625em solid #123bb6;
+    border-left: 0.0625em solid #0075c9;
     padding: 0 0 1.875em 1.875em;
     position: relative;
 }
@@ -32,13 +32,13 @@
     content: " ";
     border: 8px solid #d1dbfa;
     border-radius: 500%;
-    background: #123bb6;
+    background: #0075c9;
     height: 20px;
     width: 20px;
 }
 
 .tStep {
-    color: #123bb6;
+    color: #0075c9;
     position: relative;
     font-size: 0.875em;
     margin-bottom: 0.5em;

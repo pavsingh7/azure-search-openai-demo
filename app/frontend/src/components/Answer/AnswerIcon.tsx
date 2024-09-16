@@ -1,5 +1,5 @@
-import { Sparkle28Filled } from "@fluentui/react-icons";
+import answerIcon from "/public/256_classic.png";
 
 export const AnswerIcon = () => {
-    return <Sparkle28Filled primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Answer logo" />;
+    return <img src={answerIcon} alt="Answer logo" aria-hidden="true" width="36" height="36" aria-label="Answer logo" />;
 };

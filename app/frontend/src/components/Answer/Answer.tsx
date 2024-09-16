@@ -5,6 +5,9 @@ import DOMPurify from "dompurify";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useState } from "react";
 
 import styles from "./Answer.module.css";
 import { ChatAppResponse, getCitationFilePath, SpeechConfig } from "../../api";
@@ -80,7 +83,61 @@ export const Answer = ({
 
             <Stack.Item grow>
                 <div className={styles.answerText}>
-                    <ReactMarkdown children={sanitizedAnswerHtml} rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]} />
+                    <ReactMarkdown
+                        rehypePlugins={[rehypeRaw]}
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                            code({ node, inline, className, children, ...props }: any) {
+                                const match = /language-(\w+)/.exec(className || "");
+                                const codeContent = String(children).replace(/\n$/, "");
+                                const [copied, setCopied] = useState(false);
+
+                                const copyToClipboard = () => {
+                                    navigator.clipboard.writeText(codeContent);
+                                    setCopied(true);
+                                    setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+                                };
+
+                                return !inline && match ? (
+                                    <div style={{ position: "relative" }}>
+                                        <SyntaxHighlighter
+                                            style={dracula}
+                                            language={match[1]}
+                                            PreTag="div"
+                                            {...props}
+                                            customStyle={{
+                                                whiteSpace: "pre-wrap",
+                                                wordWrap: "break-word",
+                                                overflowX: "auto"
+                                            }}
+                                        >
+                                            {codeContent}
+                                        </SyntaxHighlighter>
+                                        <button
+                                            onClick={copyToClipboard}
+                                            style={{
+                                                position: "absolute",
+                                                top: "10px",
+                                                right: "10px",
+                                                background: copied ? "lightgreen" : "white",
+                                                border: "1px solid gray",
+                                                borderRadius: "5px",
+                                                cursor: "pointer"
+                                            }}
+                                        >
+                                            {copied ? "Copied!" : "Copy"}
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <code style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }} className={className} {...props}>
+                                        {children}
+                                    </code>
+                                );
+                            }
+                        }}
+                    >
+                        {sanitizedAnswerHtml}
+                    </ReactMarkdown>
                 </div>
             </Stack.Item>
 
