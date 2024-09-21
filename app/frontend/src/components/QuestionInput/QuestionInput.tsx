@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Stack, TextField } from "@fluentui/react";
 import { Button, Tooltip } from "@fluentui/react-components";
 import { Send28Filled } from "@fluentui/react-icons";
+import { useTranslation } from "react-i18next";
 
 import styles from "./QuestionInput.module.css";
 import { SpeechInput } from "./SpeechInput";
@@ -20,6 +21,7 @@ interface Props {
 export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, initQuestion, showSpeechInput }: Props) => {
     const [question, setQuestion] = useState<string>("");
     const { loggedIn } = useContext(LoginContext);
+    const { t } = useTranslation();
     const [isComposing, setIsComposing] = useState(false);
 
     useEffect(() => {
@@ -87,6 +89,7 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, init
             <div className={styles.questionInputButtonsContainer}>
                 <Tooltip content="Send question" relationship="label">
                     <Button size="large" icon={<Send28Filled primaryFill="rgba(0,117,201)" />} disabled={sendQuestionDisabled} onClick={sendQuestion} />
+
                 </Tooltip>
             </div>
             {showSpeechInput && <SpeechInput updateQuestion={setQuestion} />}

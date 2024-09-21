@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Example } from "./Example";
 import { DEFAULT_EXAMPLES, GPT4V_EXAMPLES } from "../../i18n/examples.js";
+
 import styles from "./Example.module.css";
 
 // const DEFAULT_EXAMPLES: string[] = [
@@ -23,6 +24,7 @@ const shuffleArray = (array: string[]) => {
     return array;
 };
 
+
 interface Props {
     onExampleClicked: (value: string) => void;
     useGPT4V?: boolean;
@@ -42,6 +44,7 @@ export const ExampleList = ({ onExampleClicked, useGPT4V }: Props) => {
 
         return () => clearInterval(intervalId); // Replaced workerClearInterval
     }, [useGPT4V]);
+
 
     return (
         <ul className={styles.examplesNavList}>
