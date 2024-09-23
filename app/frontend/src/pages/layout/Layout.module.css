@@ -104,6 +104,11 @@
     gap: 0; /* Ensure no gap between login button and menu toggle */
 }
 
+.previewText {
+    color: #ffb300; /* Replace with your desired color */
+    /* You can also add more styles if needed */
+}
+
 @media (min-width: 992px) {
     .headerTitle {
         font-weight: 600;

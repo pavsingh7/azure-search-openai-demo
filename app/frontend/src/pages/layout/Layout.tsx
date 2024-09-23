@@ -39,7 +39,9 @@ const Layout = () => {
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer} ref={menuRef}>
                     <Link to="/" className={styles.headerTitleContainer}>
-                        <h3 className={styles.headerTitle}>SLS Actuarial Chatbot</h3>
+                        <h3 className={styles.headerTitle}>
+                            SLS Actuarial Chatbot (<span className={styles.previewText}>Version 1.0</span>)
+                        </h3>
                     </Link>
                     <nav>
                         <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
