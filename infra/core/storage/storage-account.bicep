@@ -16,13 +16,13 @@ param defaultToOAuthAuthentication bool = false
 param deleteRetentionPolicy object = {}
 @allowed([ 'AzureDnsZone', 'Standard' ])
 param dnsEndpointType string = 'Standard'
-param isHnsEnabled bool = false
+param isHnsEnabled bool = true
 param kind string = 'StorageV2'
 param minimumTlsVersion string = 'TLS1_2'
 param supportsHttpsTrafficOnly bool = true
 @allowed([ 'Enabled', 'Disabled' ])
-param publicNetworkAccess string = 'Enabled'
-param sku object = { name: 'Standard_LRS' }
+param publicNetworkAccess string = 'Disabled'
+param sku object = { name: 'Standard_ZRS' }
 @allowed([ 'None', 'AzureServices' ])
 param bypass string = 'AzureServices'
 
