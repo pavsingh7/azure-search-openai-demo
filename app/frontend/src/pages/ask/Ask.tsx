@@ -23,6 +23,8 @@ import { useMsal } from "@azure/msal-react";
 import { TokenClaimsDisplay } from "../../components/TokenClaimsDisplay";
 import { LoginContext } from "../../loginContext";
 import { LanguagePicker } from "../../i18n/LanguagePicker";
+import { Feedback_FormSettings } from "../../components/Feedback_FormSettings";
+import { Wiki_Information } from "../../components/Wiki_Information";
 
 export function Component(): JSX.Element {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
@@ -249,8 +251,14 @@ export function Component(): JSX.Element {
             </Helmet>
             <div className={styles.askTopSection}>
                 <div className={styles.commandsContainer}>
-                    {showUserUpload && <UploadFile className={styles.commandButton} disabled={loggedIn} />}
-                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                    <div className={styles.leftCommands}>
+                        <Feedback_FormSettings className={styles.commandButton} />
+                        <Wiki_Information className={styles.commandButton} />
+                    </div>
+                    <div className={styles.rightCommands}>
+                        {showUserUpload && <UploadFile className={styles.commandButton} disabled={loggedIn} />}
+                        <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                    </div>
                 </div>
                 <img src={answerIcon} width="165" height="165" aria-hidden="true" aria-label="Chat logo" />
                 <h1 className={styles.askTitle}>Ask your data</h1>

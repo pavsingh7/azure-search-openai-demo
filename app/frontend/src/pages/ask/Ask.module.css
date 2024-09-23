@@ -63,7 +63,18 @@
     display: flex;
     padding-left: 9rem;
     padding-right: 1rem;
-    align-self: flex-end;
+    align-self: flex-start;
+}
+
+.leftCommands {
+    display: flex; /* Keep the left buttons in a row */
+    gap: 10px; /* Space between left buttons */
+    padding-left: 15px; /* Add left padding for space */
+}
+
+.rightCommands {
+    display: flex; /* Keep the right buttons in a row */
+    gap: 0px; /* Space between right buttons */
 }
 
 .commandButton {

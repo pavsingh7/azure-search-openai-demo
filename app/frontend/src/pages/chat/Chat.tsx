@@ -36,6 +36,8 @@ import { TokenClaimsDisplay } from "../../components/TokenClaimsDisplay";
 import { GPT4VSettings } from "../../components/GPT4VSettings";
 import { LoginContext } from "../../loginContext";
 import { LanguagePicker } from "../../i18n/LanguagePicker";
+import { Feedback_FormSettings } from "../../components/Feedback_FormSettings"; // Adjust the path as necessary
+import { Wiki_Information } from "../../components/Wiki_Information";
 
 const Chat = () => {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
@@ -353,10 +355,17 @@ const Chat = () => {
                 <title>{t("pageTitle")}</title>
             </Helmet>
             <div className={styles.commandsContainer}>
-                <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
-                {showUserUpload && <UploadFile className={styles.commandButton} disabled={!loggedIn} />}
-                <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                <div className={styles.leftCommands}>
+                    <Feedback_FormSettings className={styles.commandButtonPreview} />
+                    <Wiki_Information className={styles.commandButtonPreview} />
+                </div>
+                <div className={styles.rightCommands}>
+                    <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
+                    {showUserUpload && <UploadFile className={styles.commandButton} disabled={!loggedIn} />}
+                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                </div>
             </div>
+
             <div className={styles.chatRoot}>
                 <div className={styles.chatContainer}>
                     {!lastQuestionRef.current ? (

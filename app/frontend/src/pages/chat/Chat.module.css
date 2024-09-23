@@ -95,13 +95,35 @@
 }
 
 .commandsContainer {
-    display: flex;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    align-self: flex-end;
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out the left and right groups */
+    align-items: center; /* Align items vertically in the center */
 }
 
-.commandButton {
+.leftCommands {
+    display: flex; /* Keep the left buttons in a row */
+    gap: 10px; /* Space between left buttons */
+    padding-left: 15px; /* Add left padding for space */
+}
+
+.rightCommands {
+    display: flex; /* Keep the right buttons in a row */
+    gap: 0px; /* Space between right buttons */
+}
+
+.commonButton {
+    font-size: 1rem; /* Adjust to match your desired size */
+    color: #f2f2f2; /* Set to the same color as the other buttons */
+    background-color: #0078d4; /* Adjust to match your desired background color */
+    border: none; /* Ensure no border if that’s the design */
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    cursor: pointer;
+    transition:
+        background-color 0.2s,
+        color 0.2s; /* Transition for hover effects */
+}
+
+.commandButtonPreview {
     margin-bottom: 1.25rem;
 }
 
