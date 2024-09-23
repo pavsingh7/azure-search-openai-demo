@@ -164,7 +164,7 @@ param bypass string = 'AzureServices'
 
 @description('Public network access value for all deployed resources')
 @allowed(['Enabled', 'Disabled'])
-param publicNetworkAccess string = 'Enabled'
+param publicNetworkAccess string = 'Disabled'
 
 @description('Add a private endpoints for network connectivity')
 param usePrivateEndpoint bool = false
