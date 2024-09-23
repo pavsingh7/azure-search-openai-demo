@@ -257,7 +257,7 @@ export function Component(): JSX.Element {
                     </div>
                     <div className={styles.rightCommands}>
                         {showUserUpload && <UploadFile className={styles.commandButton} disabled={loggedIn} />}
-                        <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                        {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
                     </div>
                 </div>
                 <img src={answerIcon} width="165" height="165" aria-hidden="true" aria-label="Chat logo" />
