@@ -25,7 +25,7 @@ module main 'main.bicep' = {
     searchServiceSemanticRankerLevel: 'free'
     searchServiceSkuName: 'standard'
     speechServiceSkuName: 'S0'
-    storageSkuName: 'Standard_LRS'
+    storageSkuName: 'Standard_ZRS'
     useApplicationInsights: false
     useVectors: true
     useGPT4V: false
