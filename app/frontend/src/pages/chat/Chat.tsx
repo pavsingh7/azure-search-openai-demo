@@ -364,7 +364,7 @@ const Chat = () => {
                             <img src={answerIcon} width="165" height="165" aria-hidden="true" aria-label="Chat logo" />
                             <h1 className={styles.chatEmptyStateTitle}>ActuarialGPT</h1>
                             <h2 className={styles.chatEmptyStateSubtitle}>Ask a question...</h2>
-<!--                             {showLanguagePicker && <LanguagePicker onLanguageChange={newLang => i18n.changeLanguage(newLang)} />} -->
+                            {/* {showLanguagePicker && <LanguagePicker onLanguageChange={newLang => i18n.changeLanguage(newLang)} />} */}
                             <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />
                         </div>
                     ) : (
@@ -439,7 +439,6 @@ const Chat = () => {
                         <QuestionInput
                             clearOnSend
                             placeholder="Type a new question (e.g. what savings products does Sanlam have?)"
-
                             disabled={isLoading}
                             onSend={question => makeApiRequest(question)}
                             showSpeechInput={showSpeechInput}
