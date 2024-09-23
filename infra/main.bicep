@@ -195,7 +195,18 @@ param useLocalHtmlParser bool = false
 
 var abbrs = loadJsonContent('abbreviations.json')
 var resourceToken = toLower(uniqueString(subscription().id, environmentName, location))
-var tags = { 'azd-env-name': environmentName }
+param tags object = {
+  accountId: '1be90725-a7cb-4929-8321-8a8b1e539239'
+  accountName: 'azr-sbiopenai-sbx-sub'
+  applicationName:'aistudio_advanced_analytics'
+  businessCluster:'sls'
+  businessEntity:'actuarial : sanlam business intelligence (sbi)'
+  businessEntityOwner:'shabbeer omar'
+  costCenter:'a02600'
+  costCenterOwner:'shabbeer omar'
+  environment:'dev'
+  techOwner:'sgt application support'
+  }
 
 var tenantIdForAuth = !empty(authTenantId) ? authTenantId : tenantId
 var authenticationIssuerUri = '${environment().authentication.loginEndpoint}${tenantIdForAuth}/v2.0'
