@@ -80,22 +80,30 @@ export const AnalysisPanel = ({ answer, activeTab, activeCitation, citationHeigh
             <PivotItem
                 itemKey={AnalysisPanelTabs.ThoughtProcessTab}
                 headerText="Thought Process"
-                headerButtonProps={isDisabledThoughtProcessTab ? pivotItemDisabledStyle : undefined}
+                headerButtonProps={{
+                    style: { color: "#0075c9" }, // Set the color for the Thought Process tab
+                    disabled: isDisabledThoughtProcessTab
+                }}
             >
                 <ThoughtProcess thoughts={answer.context.thoughts || []} />
             </PivotItem>
             <PivotItem
                 itemKey={AnalysisPanelTabs.SupportingContentTab}
                 headerText="Supporting Content"
-
-                headerButtonProps={isDisabledSupportingContentTab ? pivotItemDisabledStyle : undefined}
+                headerButtonProps={{
+                    style: { color: "#0075c9" }, // Set the color for the Supporting Content tab
+                    disabled: isDisabledSupportingContentTab
+                }}
             >
                 <SupportingContent supportingContent={answer.context.data_points} />
             </PivotItem>
             <PivotItem
                 itemKey={AnalysisPanelTabs.CitationTab}
                 headerText={t("headerTexts.citation")}
-                headerButtonProps={isDisabledCitationTab ? pivotItemDisabledStyle : undefined}
+                headerButtonProps={{
+                    style: { color: "#0075c9" }, // Set the color for the Citation tab
+                    disabled: isDisabledCitationTab
+                }}
             >
                 {renderFileViewer()}
             </PivotItem>
