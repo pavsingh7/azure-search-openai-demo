@@ -65,7 +65,7 @@
     margin-bottom: 1.25rem;
 }
 
-.chatInput {
+/* .chatInput {
     position: sticky;
     bottom: 0;
     flex: 0 0 6.25rem;
@@ -74,6 +74,23 @@
     max-width: 64.25rem;
     background: #1e1e1e;
     border-radius: 1rem;
+} */
+
+.chatInput {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    max-width: 64.25rem;
+    padding: 1rem;
+    background: #1e1e1e;
+    border-radius: 1rem;
+    color: #f2f2f2;
+    resize: none; /* Disable manual resize handle */
+    overflow: hidden; /* Prevent overflow */
+    font-size: 1rem;
+    line-height: 1.5rem; /* Keep consistent line height */
+    min-height: 3rem; /* Set the minimum height */
+    max-height: 100; /* Optional: set a max height if desired */
 }
 
 .chatAnalysisPanel {
