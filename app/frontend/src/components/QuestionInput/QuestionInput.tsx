@@ -186,7 +186,8 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, init
                 onCompositionEnd={handleCompositionEnd}
             />
             <div className={styles.questionInputButtonsContainer}>
-                <Tooltip content="Send question" relationship="label">
+                {/* <Tooltip content="Send question" relationship="label"> */}
+                <Tooltip relationship="label">
                     <Button size="large" icon={<Send28Filled primaryFill="rgba(0,117,201)" />} disabled={sendQuestionDisabled} onClick={sendQuestion} />
                 </Tooltip>
             </div>
