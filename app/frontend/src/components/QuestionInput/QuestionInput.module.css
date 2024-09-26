@@ -8,6 +8,9 @@
     background: white;
     margin: 1rem auto;
     position: sticky;
+    transition:
+        box-shadow 0.3s ease,
+        height 0.3s ease; /* Smooth transitions */
 }
 
 .questionInputTextArea {
@@ -23,6 +26,7 @@
 
 @media (min-width: 992px) {
     .questionInputContainer {
-        height: 5.625rem;
+        /* Remove fixed height to allow auto growth */
+        height: auto;
     }
 }
