@@ -13,7 +13,7 @@ interface FeedbackFormSettingsProps {
 export const Feedback_FormSettings: React.FC<FeedbackFormSettingsProps> = ({ className }) => {
     const handleClick = () => {
         window.location.href =
-            "https://forms.office.com/Pages/DesignPageV2.aspx?subpage=design&FormId=19RToMlUWE2YnQ_gIHViNPhrmOAUpbZMkDB2PhcgvPJUN0dRS1lTT0s4TU1QODJPWjJEV1ZLTkNNVi4u&Token=c9826f8146d44d549dd156f112102922";
+            "https://forms.office.com/Pages/ResponsePage.aspx?id=19RToMlUWE2YnQ_gIHViNPhrmOAUpbZMkDB2PhcgvPJUN0dRS1lTT0s4TU1QODJPWjJEV1ZLTkNNVi4u";
     };
 
     return (
