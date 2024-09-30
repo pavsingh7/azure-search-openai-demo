@@ -180,7 +180,7 @@ class ChatReadRetrieveReadApproach(ChatApproach):
             self.follow_up_questions_prompt_content if overrides.get("suggest_followup_questions") else "",
         )
 
-        response_token_limit = 1024
+        response_token_limit = 4096
         messages = build_messages(
             model=self.chatgpt_model,
             system_prompt=system_message,
