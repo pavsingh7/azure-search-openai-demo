@@ -26,7 +26,7 @@ export const Wiki_Information: React.FC<Wiki_InformationProps> = ({ className })
                 onClick={handleClick}
                 appearance="primary"
             >
-                How to Use it?
+                Help & Documentation
             </Button>
         </div>
     );
