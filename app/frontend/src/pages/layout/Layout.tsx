@@ -7,6 +7,7 @@ import { useLogin } from "../../authConfig";
 
 import { LoginButton } from "../../components/LoginButton";
 import { IconButton } from "@fluentui/react";
+import { Exit_Session } from "../../components/Exit_Session"; // Import the Exit_Session component
 
 const Layout = () => {
     const { t } = useTranslation();
@@ -78,6 +79,9 @@ const Layout = () => {
             </header>
 
             <Outlet />
+            <div className={styles.footer} style={{ fontWeight: "bold" }}>
+                <Exit_Session />
+            </div>
         </div>
     );
 };
