@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect, useContext } from "react";
+import { TypewriterText } from "../../components/TypewriterText";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { Checkbox, Panel, DefaultButton, TextField, ITextFieldProps, ICheckboxProps } from "@fluentui/react";
@@ -393,7 +394,29 @@ const Chat = () => {
                     {!lastQuestionRef.current ? (
                         <div className={styles.chatEmptyState}>
                             <img src={answerIcon} width="165" height="165" aria-hidden="true" aria-label="Chat logo" />
-                            <h1 className={styles.chatEmptyStateTitle}>ActuarialGPT</h1>
+                            <div className={styles.typewriterContainer}>
+                                <h1 className={styles.chatEmptyStateTitle}>
+                                    <TypewriterText
+                                        sequence={[
+                                            "-",
+                                            "A",
+                                            "Ac",
+                                            "Act",
+                                            "Actu",
+                                            "Actua",
+                                            "Actuar",
+                                            "Actuari",
+                                            "Actuaria",
+                                            "Actuarial",
+                                            "ActuarialG",
+                                            "ActuarialGP",
+                                            "ActuarialGPT"
+                                        ]}
+                                        speed={1}
+                                        className="pulsing"
+                                    />
+                                </h1>
+                            </div>
                             <h2 className={styles.chatEmptyStateSubtitle}>Ask a question...</h2>
                             {/* {showLanguagePicker && <LanguagePicker onLanguageChange={newLang => i18n.changeLanguage(newLang)} />} */}
                             <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />

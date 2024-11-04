@@ -1,0 +1,54 @@
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 3px solid #0075c9;
+    white-space: nowrap;
+    margin: 0;
+    animation:
+        typing 0.1s steps(40, end),
+        blink-caret 0.9s step-end infinite;
+}
+.complete {
+    border-right: none;
+    border-right: 3px solid #0075c9;
+    width: 100%;
+    text-shadow: 0 0 8px #0075c9;
+    animation:
+        pulse 1.8s infinite,
+        blink-caret 0.9s step-end infinite;
+}
+
+@keyframes pulse {
+    0% {
+        text-shadow: 0 0 8px rgba(0, 117, 201, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(0, 117, 201, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 8px rgba(0, 117, 201, 0.5);
+    }
+}
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #0075c9; /* Change this line */
+    }
+}
+
+.container {
+    display: inline-block;
+    padding: 10px;
+}
