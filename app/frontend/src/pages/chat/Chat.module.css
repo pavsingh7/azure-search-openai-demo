@@ -16,6 +16,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    max-height: calc(100vh - 10rem);
 }
 
 .chatEmptyState {
@@ -48,10 +49,13 @@
     max-width: 64.25rem;
     width: 100%;
     overflow-y: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    /* padding-left: 1rem;
+    padding-right: 1rem; */
+    padding: 0 2rem;
     display: flex;
     flex-direction: column;
+    resize: none;
+    min-width: 50vw;
 }
 
 .chatMessageGpt {
@@ -65,38 +69,39 @@
     margin-bottom: 1.25rem;
 }
 
-/* .chatInput {
-    position: sticky;
-    bottom: 0;
-    flex: 0 0 6.25rem;
-    padding: 1rem;
-    width: 100%;
-    max-width: 64.25rem;
-    background: #1e1e1e;
-    border-radius: 1rem;
-} */
-
 .chatInput {
     position: sticky;
     bottom: 0;
+    flex: 0 0 6.25rem;
+    padding: 0rem;
     width: 100%;
     max-width: 64.25rem;
-    padding: 1rem;
+    background: #1e1e1e;
+    border-radius: 1rem;
+    min-height: 7.5rem;
+}
+
+/* .chatInput {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    max-width: 64.25rem;
+    padding: 0.75rem 1.5rem; 
     background: #1e1e1e;
     border-radius: 1rem;
     color: #f2f2f2;
-    resize: none; /* Disable manual resize handle */
-    overflow: hidden; /* Prevent overflow */
+    resize: none; 
+    overflow: hidden; 
     font-size: 1rem;
-    line-height: 1.5rem; /* Keep consistent line height */
-    min-height: 3rem; /* Set the minimum height */
-    max-height: 100; /* Optional: set a max height if desired */
-}
+    line-height: 1.5rem;
+    min-height: 3rem; 
+    max-height: 100; 
+} */
 
 .chatAnalysisPanel {
     flex: 1;
     overflow-y: auto;
-    max-height: 89vh;
+    max-height: 85vh;
     margin-left: 1.25rem;
     margin-right: 1.25rem;
 }
@@ -142,6 +147,24 @@
 
 .commandButtonPreview {
     margin-bottom: 1.25rem;
+}
+
+/* For Webkit-based browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #000000; /* Color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffb300; /* Color of the scrollbar handle */
+    border-radius: 4px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0078d4; /* Color on hover */
 }
 
 @media (min-width: 992px) {
