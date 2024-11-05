@@ -396,25 +396,7 @@ const Chat = () => {
                             <img src={answerIcon} width="165" height="165" aria-hidden="true" aria-label="Chat logo" />
                             <div className={styles.typewriterContainer}>
                                 <h1 className={styles.chatEmptyStateTitle}>
-                                    <TypewriterText
-                                        sequence={[
-                                            "-",
-                                            "A",
-                                            "Ac",
-                                            "Act",
-                                            "Actu",
-                                            "Actua",
-                                            "Actuar",
-                                            "Actuari",
-                                            "Actuaria",
-                                            "Actuarial",
-                                            "ActuarialG",
-                                            "ActuarialGP",
-                                            "ActuarialGPT"
-                                        ]}
-                                        speed={1}
-                                        className="pulsing"
-                                    />
+                                    <TypewriterText sequence={["ActuarialGPT"]} speed={1} className="pulsing" />
                                 </h1>
                             </div>
                             <h2 className={styles.chatEmptyStateSubtitle}>Ask a question...</h2>
