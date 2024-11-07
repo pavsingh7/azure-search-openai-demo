@@ -10,7 +10,7 @@
     position: sticky;
     transition:
         box-shadow 0.3s ease,
-        height 0.3s ease; /* Smooth transitions */
+        height 0.3s ease;
 }
 
 .questionInputTextArea {
