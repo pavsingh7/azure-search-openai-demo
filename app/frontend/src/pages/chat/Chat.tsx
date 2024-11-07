@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useContext } from "react";
-import { TypewriterText } from "../../components/TypewriterText";
+import { TypewriterText } from "../../components/TypewriterText/TypewriterText";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { Checkbox, Panel, DefaultButton, TextField, ITextFieldProps, ICheckboxProps } from "@fluentui/react";
@@ -444,13 +444,14 @@ const Chat = () => {
                                                 },
                                                 session_state: undefined
                                             }}
+                                            index={-1}
+                                            speechConfig={speechConfig}
                                             isSelected={false}
                                             onCitationClicked={() => {}}
                                             onThoughtProcessClicked={() => {}}
                                             onSupportingContentClicked={() => {}}
                                             onFollowupQuestionClicked={() => {}}
                                             showFollowupQuestions={false}
-                                            speechUrl={null}
                                         />
                                     </div>
                                 </div>
