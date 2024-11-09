@@ -113,10 +113,10 @@ param chatGptDeploymentCapacity int = 0
 var chatGpt = {
 modelName: !empty(chatGptModelName)
     ? chatGptModelName
-    : startsWith(openAiHost, 'azure') ? 'gpt-4o' : 'gpt-4o'
+    : startsWith(openAiHost, 'azure') ? 'gpt-4o-mini' : 'gpt-4o-mini'
   deploymentName: !empty(chatGptDeploymentName) ? chatGptDeploymentName : 'chat'
-  deploymentVersion: !empty(chatGptDeploymentVersion) ? chatGptDeploymentVersion : '2024-05-13'
-  deploymentCapacity: chatGptDeploymentCapacity != 0 ? chatGptDeploymentCapacity : 57
+  deploymentVersion: !empty(chatGptDeploymentVersion) ? chatGptDeploymentVersion : '2024-07-18'
+  deploymentCapacity: chatGptDeploymentCapacity != 0 ? chatGptDeploymentCapacity : 30482
 }
 
 param embeddingModelName string = ''
