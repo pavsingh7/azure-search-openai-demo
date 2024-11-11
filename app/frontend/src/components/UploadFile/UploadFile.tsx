@@ -25,7 +25,7 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
     const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
     const { t } = useTranslation();
 
-    if (!useLogin) {
+    if (useLogin) {
         throw new Error("The UploadFile component requires useLogin to be true");
     }
 
@@ -106,7 +106,7 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
         <div className={`${styles.container} ${className ?? ""}`}>
             <div>
                 <Button id="calloutButton" icon={<Add24Regular />} disabled={disabled} onClick={handleButtonClick}>
-                    {t("upload.manageFileUploads")}
+                    {"Personal File Uploads"}
                 </Button>
 
                 {isCalloutVisible && (
