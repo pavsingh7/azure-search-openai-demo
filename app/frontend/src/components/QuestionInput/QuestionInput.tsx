@@ -203,7 +203,7 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, init
                     //     </Tooltip>
                     <Button size="large" icon={<Stop24Filled primaryFill="#fab302" />} onClick={onStop} />
                 ) : (
-                    <Button size="large" icon={<Send28Filled primaryFill="rgba(115, 118, 225, 1)" />} disabled={sendQuestionDisabled} onClick={sendQuestion} />
+                    <Button size="large" icon={<Send28Filled primaryFill="#0078d4" />} disabled={sendQuestionDisabled} onClick={sendQuestion} />
                 )}
             </div>
             {showSpeechInput && <SpeechInput updateQuestion={setQuestion} />}
