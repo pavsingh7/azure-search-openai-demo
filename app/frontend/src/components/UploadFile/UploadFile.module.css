@@ -3,13 +3,28 @@
     align-items: center;
     gap: 0.375em;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.9rem;
     color: #f2f2f2;
+    font-size: 1.2rem;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.container:hover {
+    background-color: #444;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .callout {
     padding: 1em;
     min-height: 6.25em;
+    background-color: #444;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .list {
@@ -24,4 +39,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 0.75em;
+    background-color: #555;
+    padding: 0.5em;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
