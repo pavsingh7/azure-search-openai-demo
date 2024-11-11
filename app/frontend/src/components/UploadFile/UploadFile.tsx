@@ -25,7 +25,7 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
     const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
     const { t } = useTranslation();
 
-    if (useLogin) {
+    if (!useLogin) {
         throw new Error("The UploadFile component requires useLogin to be true");
     }
 
