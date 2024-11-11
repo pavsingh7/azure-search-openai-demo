@@ -41,11 +41,11 @@ const Layout = () => {
                 <div className={styles.headerContainer} ref={menuRef}>
                     <Link to="/" className={styles.headerTitleContainer}>
                         <h3 className={styles.headerTitle}>
-                            SLS ActuarialGPT (<span className={styles.previewText}>Preview Version 2.0</span>)
+                            SLS ActuarialGPT (<span className={styles.previewText}>Preview Version 2.5</span>)
                         </h3>
                     </Link>
                     <nav>
-                        <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
+                        {/* <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
                             <li>
                                 <NavLink
                                     to="/"
@@ -64,10 +64,10 @@ const Layout = () => {
                                     Ask
                                 </NavLink>
                             </li>
-                        </ul>
+                        </ul> */}
                     </nav>
                     <div className={styles.loginMenuContainer}>
-                        {useLogin && <LoginButton />}
+                        {!useLogin && <LoginButton />}
                         <IconButton
                             iconProps={{ iconName: "GlobalNavButton" }}
                             className={styles.menuToggle}
