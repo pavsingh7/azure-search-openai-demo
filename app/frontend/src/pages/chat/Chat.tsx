@@ -385,7 +385,7 @@ const Chat = () => {
                 <div className={styles.rightCommands}>
                     <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} />
                     {showUserUpload && <UploadFile className={styles.commandButton} disabled={!loggedIn} />}
-                    {/* <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} /> */}
+                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
                 </div>
             </div>
 
@@ -524,23 +524,95 @@ const Chat = () => {
                 )}
 
                 <Panel
-                    headerText={t("labels.headerText")}
+                    headerText={"Options and Chat Settings"}
                     isOpen={isConfigPanelOpen}
                     isBlocking={false}
                     onDismiss={() => setIsConfigPanelOpen(false)}
                     closeButtonAriaLabel={t("labels.closeButton")}
-                    onRenderFooterContent={() => <DefaultButton onClick={() => setIsConfigPanelOpen(false)}>{t("labels.closeButton")}</DefaultButton>}
-                    isFooterAtBottom={true}
+                    onRenderFooterContent={() => (
+                        <DefaultButton
+                            onClick={() => setIsConfigPanelOpen(false)}
+                            styles={{
+                                root: {
+                                    backgroundColor: "#222",
+                                    color: "#fff",
+                                    border: "none"
+                                },
+                                rootHovered: {
+                                    backgroundColor: "#333",
+                                    color: "#fff"
+                                },
+                                rootPressed: {
+                                    backgroundColor: "#444",
+                                    color: "#fff"
+                                }
+                            }}
+                        >
+                            {"Apply"}
+                        </DefaultButton>
+                    )}
+                    isFooterAtBottom={false}
+                    styles={{
+                        main: {
+                            backgroundColor: "#333",
+                            color: "#fff"
+                        },
+                        header: {
+                            backgroundColor: "#444",
+                            color: "#fff",
+                            selectors: {
+                                "& *": { color: "#fff" },
+                                ".ms-Panel-headerText": { color: "#fff" },
+                                ".ms-Panel-closeButton": {
+                                    color: "#fff",
+                                    selectors: {
+                                        ":hover": { backgroundColor: "#555" }
+                                    }
+                                }
+                            }
+                        },
+                        footer: {
+                            backgroundColor: "#444",
+                            color: "#fff",
+                            selectors: {
+                                "& *": { color: "#fff" }
+                            }
+                        },
+                        content: {
+                            backgroundColor: "#333",
+                            color: "#fff",
+                            selectors: {
+                                "& *": { color: "#fff" }
+                            }
+                        },
+                        commands: { backgroundColor: "#444" }
+                    }}
                 >
                     <TextField
                         id={promptTemplateFieldId}
                         className={styles.chatSettingsSeparator}
                         defaultValue={promptTemplate}
-                        label={t("labels.promptTemplate")}
+                        label={"Give a new system prompt?"}
                         multiline
                         autoAdjustHeight
                         onChange={onPromptTemplateChange}
                         aria-labelledby={promptTemplateId}
+                        styles={{
+                            field: {
+                                backgroundColor: "#444",
+                                color: "#fff",
+                                borderColor: "#555",
+                                selectors: {
+                                    ":hover": { borderColor: "#666" },
+                                    ":focus": { borderColor: "#777" }
+                                }
+                            },
+                            fieldGroup: {
+                                backgroundColor: "#444",
+                                borderColor: "#555"
+                            },
+                            root: { color: "#fff" }
+                        }}
                         onRenderLabel={(props: ITextFieldProps | undefined) => (
                             <HelpCallout
                                 labelId={promptTemplateId}
@@ -551,7 +623,7 @@ const Chat = () => {
                         )}
                     />
 
-                    <TextField
+                    {/* <TextField
                         id={temperatureFieldId}
                         className={styles.chatSettingsSeparator}
                         label={t("labels.temperature")}
@@ -565,9 +637,9 @@ const Chat = () => {
                         onRenderLabel={(props: ITextFieldProps | undefined) => (
                             <HelpCallout labelId={temperatureId} fieldId={temperatureFieldId} helpText={t("helpTexts.temperature")} label={props?.label} />
                         )}
-                    />
+                    /> */}
 
-                    <TextField
+                    {/* <TextField
                         id={seedFieldId}
                         className={styles.chatSettingsSeparator}
                         label={t("labels.seed")}
@@ -720,9 +792,9 @@ const Chat = () => {
                             }}
                             updateGPT4VInputs={inputs => setGPT4VInput(inputs)}
                         />
-                    )}
+                    )} */}
 
-                    {showVectorOption && (
+                    {/* {showVectorOption && (
                         <VectorSettings
                             defaultRetrievalMode={retrievalMode}
                             showImageOptions={useGPT4V && showGPT4VOptions}
@@ -780,7 +852,7 @@ const Chat = () => {
                         onRenderLabel={(props: ICheckboxProps | undefined) => (
                             <HelpCallout labelId={shouldStreamId} fieldId={shouldStreamFieldId} helpText={t("helpTexts.streamChat")} label={props?.label} />
                         )}
-                    />
+                    /> */}
 
                     {useLogin && <TokenClaimsDisplay />}
                 </Panel>
