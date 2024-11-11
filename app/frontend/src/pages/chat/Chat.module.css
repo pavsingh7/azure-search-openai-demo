@@ -1,8 +1,19 @@
+/* Ensure the html and body take up the full height */
+html,
+body {
+    height: 95%;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
     flex: 1;
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
+    width: 100%;
+    height: 100%;
+    margin: 0; /* Remove top margin */
 }
 
 .chatRoot {
@@ -27,6 +38,9 @@
     align-items: center;
     max-height: 64rem;
     padding-top: 1rem;
+    width: 100%;
+    height: 100%;
+    padding-top: 1.75rem; /* Keep the padding if needed */
 }
 
 .chatEmptyStateTitle {
@@ -71,7 +85,7 @@
 
 .chatInput {
     position: sticky;
-    bottom: 0;
+    bottom: 10;
     flex: 0 0 6.25rem;
     padding: 0rem;
     width: 100%;
@@ -170,10 +184,16 @@
 @media (min-width: 992px) {
     .container {
         margin-top: 1rem;
+        width: 100%;
+        height: 100%;
+        margin: 0; /* Remove top margin */
     }
 
     .chatEmptyState {
         padding-top: 1.75rem;
+        width: 100%;
+        height: 100%;
+        padding-top: 1.75rem; /* Keep the padding if needed */
     }
 
     .chatEmptyStateTitle {
