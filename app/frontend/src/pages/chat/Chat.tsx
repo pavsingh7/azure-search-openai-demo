@@ -396,10 +396,10 @@ const Chat = () => {
                             <img src={answerIcon} width="165" height="165" aria-hidden="true" aria-label="Chat logo" />
                             <div className={styles.typewriterContainer}>
                                 <h1 className={styles.chatEmptyStateTitle}>
-                                    <TypewriterText sequence={["ActuarialGPT"]} speed={1} className="pulsing" />
+                                    <TypewriterText sequence={["ActuarialGPT"]} speed={200} className="pulsing" />
                                 </h1>
                             </div>
-                            <h2 className={styles.chatEmptyStateSubtitle}>Ask a question...</h2>
+                            {/* <h2 className={styles.chatEmptyStateSubtitle}>Ask a question...</h2> */}
                             {/* {showLanguagePicker && <LanguagePicker onLanguageChange={newLang => i18n.changeLanguage(newLang)} />} */}
                             <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />
                         </div>
