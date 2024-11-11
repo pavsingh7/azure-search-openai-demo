@@ -24,7 +24,6 @@ const shuffleArray = (array: string[]) => {
     return array;
 };
 
-
 interface Props {
     onExampleClicked: (value: string) => void;
     useGPT4V?: boolean;
@@ -32,11 +31,18 @@ interface Props {
 
 export const ExampleList = ({ onExampleClicked, useGPT4V }: Props) => {
     const [currentExamples, setCurrentExamples] = useState<string[]>([]);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
         const loadExamples = () => {
-            const examples = useGPT4V ? GPT4V_EXAMPLES : DEFAULT_EXAMPLES;
-            setCurrentExamples(shuffleArray(examples).slice(0, 3));
+            setIsTransitioning(true);
+
+            // Wait for fade out animation
+            setTimeout(() => {
+                const examples = useGPT4V ? GPT4V_EXAMPLES : DEFAULT_EXAMPLES;
+                setCurrentExamples(shuffleArray(examples).slice(0, 3));
+                setIsTransitioning(false);
+            }, 500); // Match this with CSS transition duration
         };
 
         loadExamples();
@@ -45,11 +51,10 @@ export const ExampleList = ({ onExampleClicked, useGPT4V }: Props) => {
         return () => clearInterval(intervalId); // Replaced workerClearInterval
     }, [useGPT4V]);
 
-
     return (
         <ul className={styles.examplesNavList}>
             {currentExamples.map((question, i) => (
-                <li key={i}>
+                <li key={`${question}-${i}`} className={`${styles.exampleItem} ${isTransitioning ? styles.transitioning : ""}`}>
                     <Example text={question} value={question} onClick={onExampleClicked} />
                 </li>
             ))}
