@@ -20,11 +20,52 @@
 }
 
 .callout {
-    padding: 1em;
-    min-height: 6.25em;
-    background-color: #444;
+    padding: 3px;
+    min-height: 20.25em;
+    background-color: #1e1e1e;
+    color: #a39b9b;
+    border: 1px solid #404040;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* Ensure child elements inherit text color */
+    h3,
+    p,
+    span {
+        color: #ffffff;
+    }
+
+    /* Add subtle highlight for better depth */
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    }
+    /* Additional override for Fluent UI default styles */
+    :global(.ms-Callout-main) {
+        background-color: #555;
+    }
+    :global(.ms-Callout-beak) {
+        background-color: #ffffff !important;
+        border: 1px solid #ffffff !important;
+    }
+
+    /* Target all Callout parts */
+    :global(.ms-Callout),
+    :global(.ms-Callout-main),
+    :global(.ms-Callout-container) {
+        background-color: #555 !important;
+        border-color: #404040 !important;
+    }
+
+    /* Override any white backgrounds */
+    :global(.ms-Callout *) {
+        background-color: #555 !important;
+    }
 }
 
 .list {
@@ -40,7 +81,55 @@
     text-overflow: ellipsis;
     margin-bottom: 0.75em;
     background-color: #555;
+    color: #f2f2f2;
     padding: 0.5em;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chooseFiles {
+    background: linear-gradient(135deg, #cacaca 0%, #cacaca 100%);
+    color: #b40000;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(135deg, #ffb300 0%, #ffb300 100%);
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.loadingSpinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

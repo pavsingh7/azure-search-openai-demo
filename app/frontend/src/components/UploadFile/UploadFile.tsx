@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from "react";
 import { Callout, Label, Text } from "@fluentui/react";
 import { Button } from "@fluentui/react-components";
-import { Add24Regular, Delete24Regular } from "@fluentui/react-icons";
+import { Add24Regular, Delete24Regular, ArrowUpload24Regular } from "@fluentui/react-icons";
 import { useMsal } from "@azure/msal-react";
 import { useTranslation } from "react-i18next";
 
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
-    // State variables to manage the component behavior
+    // Change this line to force callout to be visible
     const [isCalloutVisible, setIsCalloutVisible] = useState<boolean>(false);
     const [isUploading, setIsUploading] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -31,11 +31,9 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
 
     const client = useMsal().instance;
 
-    // Handler for the "Manage file uploads" button
+    // Temporarily modify this handler to do nothing (optional)
     const handleButtonClick = async () => {
-        setIsCalloutVisible(!isCalloutVisible); // Toggle the Callout visibility
-
-        // Update uploaded files by calling the API
+        // Do nothing or just load the files
         try {
             const idToken = await getToken(client);
             if (!idToken) {
@@ -105,7 +103,7 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
     return (
         <div className={`${styles.container} ${className ?? ""}`}>
             <div>
-                <Button id="calloutButton" icon={<Add24Regular />} disabled={disabled} onClick={handleButtonClick}>
+                <Button id="calloutButton" icon={<ArrowUpload24Regular />} disabled={disabled} onClick={handleButtonClick}>
                     {"Personal File Uploads"}
                 </Button>
 
@@ -120,7 +118,7 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
                     >
                         <form encType="multipart/form-data">
                             <div>
-                                <Label>{t("upload.fileLabel")}</Label>
+                                <h3>{"Upload a New File"}</h3>
                                 <input
                                     accept=".txt, .md, .json, .png, .jpg, .jpeg, .bmp, .heic, .tiff, .pdf, .docx, .xlsx, .pptx, .html"
                                     className={styles.chooseFiles}
@@ -130,15 +128,27 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
                             </div>
                         </form>
 
-                        {/* Show a loading message while files are being uploaded */}
-                        {isUploading && <Text>{t("upload.uploadingFiles")}</Text>}
+                        {/* Show loading spinner and message while files are being uploaded */}
+                        <div style={{ marginTop: "10px" }} />
+                        {isUploading && (
+                            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                <div className={styles.loadingSpinner} />
+                                <Text>{t("upload.uploadingFiles")}</Text>
+                            </div>
+                        )}
                         {!isUploading && uploadedFileError && <Text>{uploadedFileError}</Text>}
                         {!isUploading && uploadedFile && <Text>{uploadedFile.message}</Text>}
+                        <div style={{ marginTop: "0px" }} />
 
                         {/* Display the list of already uploaded */}
-                        <h3>{t("upload.uploadedFilesLabel")}</h3>
+                        <h3>{"Uploaded Files:"}</h3>
 
-                        {isLoading && <Text>{t("upload.loading")}</Text>}
+                        {isLoading && (
+                            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                <div className={styles.loadingSpinner} />
+                                <Text>{t("upload.loading")}</Text>
+                            </div>
+                        )}
                         {!isLoading && uploadedFiles.length === 0 && <Text>{t("upload.noFilesUploaded")}</Text>}
                         {uploadedFiles.map((filename, index) => {
                             return (
@@ -146,14 +156,20 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
                                     <div className={styles.item}>{filename}</div>
                                     {/* Button to remove a file from the list */}
                                     <Button
-                                        icon={<Delete24Regular />}
+                                        icon={
+                                            deletionStatus[filename] === "pending" ? (
+                                                <div className={styles.loadingSpinner} style={{ width: "16px", height: "16px" }} />
+                                            ) : (
+                                                <Delete24Regular />
+                                            )
+                                        }
                                         onClick={() => handleRemoveFile(filename)}
                                         disabled={deletionStatus[filename] === "pending" || deletionStatus[filename] === "success"}
                                     >
                                         {!deletionStatus[filename] && t("upload.deleteFile")}
-                                        {deletionStatus[filename] == "pending" && t("upload.deletingFile")}
-                                        {deletionStatus[filename] == "error" && t("upload.errorDeleting")}
-                                        {deletionStatus[filename] == "success" && t("upload.fileDeleted")}
+                                        {deletionStatus[filename] === "pending" && t("upload.deletingFile")}
+                                        {deletionStatus[filename] === "error" && t("upload.errorDeleting")}
+                                        {deletionStatus[filename] === "success" && t("upload.fileDeleted")}
                                     </Button>
                                 </div>
                             );
