@@ -22,12 +22,15 @@ body {
 }
 
 .chatContainer {
+    padding-top: 5vh;
+    margin-top: -1.5rem;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     max-height: calc(100vh - 10rem);
+    background: #1e1e1e;
 }
 
 .chatEmptyState {
@@ -37,10 +40,10 @@ body {
     justify-content: center;
     align-items: center;
     max-height: 64rem;
-    padding-top: 1rem;
+    padding-top: 5vh;
+    margin-top: -15rem;
     width: 100%;
     height: 100%;
-    padding-top: 1.75rem; /* Keep the padding if needed */
 }
 
 .chatEmptyStateTitle {
@@ -89,7 +92,7 @@ body {
     flex: 0 0 6.25rem;
     padding: 0rem;
     width: 100%;
-    max-width: 64.25rem;
+    max-width: 45.25rem;
     background: #1e1e1e;
     border-radius: 1rem;
     min-height: 5.5rem;
@@ -165,7 +168,8 @@ body {
 
 /* For Webkit-based browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    width: 8px; /* Width of the vertical scrollbar */
+    height: 8px; /* Height of the horizontal scrollbar */
 }
 
 ::-webkit-scrollbar-track {
@@ -179,6 +183,10 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #0078d4; /* Color on hover */
+}
+
+::-webkit-scrollbar-corner {
+    background: #000000; /* Color of the corner where both scrollbars meet */
 }
 
 @media (min-width: 992px) {
