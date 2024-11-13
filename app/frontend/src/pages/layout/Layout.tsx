@@ -41,7 +41,7 @@ const Layout = () => {
                 <div className={styles.headerContainer} ref={menuRef}>
                     <Link to="/" className={styles.headerTitleContainer}>
                         <h3 className={styles.headerTitle}>
-                            SLS ActuarialGPT (<span className={styles.previewText}>Preview Version 2.5</span>)
+                            SLS ActuarialGPT (<span className={styles.previewText}>Preview Version 3.0</span>)
                         </h3>
                     </Link>
                     <nav>
