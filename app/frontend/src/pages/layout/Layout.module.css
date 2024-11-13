@@ -8,7 +8,7 @@
 .header {
     background-color: #007fc9;
     color: #f2f2f2;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .headerContainer {
@@ -37,7 +37,7 @@
     margin-left: 0.5rem;
     font-weight: 600;
     /* Increase font size */
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .headerNavList {
@@ -137,7 +137,7 @@
     color: #ffb300; /* Replace with your desired color */
     /* You can also add more styles if needed */
     /* Increase font size */
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 @media (min-width: 992px) {
