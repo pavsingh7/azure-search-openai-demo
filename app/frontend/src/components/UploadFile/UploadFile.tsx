@@ -33,7 +33,9 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
 
     // Temporarily modify this handler to do nothing (optional)
     const handleButtonClick = async () => {
-        // Do nothing or just load the files
+        setIsCalloutVisible(!isCalloutVisible); // Toggle the Callout visibility
+
+        // Update uploaded files by calling the API
         try {
             const idToken = await getToken(client);
             if (!idToken) {
