@@ -15,7 +15,7 @@
     width: 100%;
     animation:
         pulse 1.8s infinite,
-        blink-caret 0.9s step-end infinite;
+        fade-out 1s forwards;
 }
 
 @keyframes pulse {
@@ -45,6 +45,15 @@
     }
     50% {
         border-color: #0075c9; /* Change this line */
+    }
+}
+
+@keyframes fade-out {
+    from {
+        border-right-color: #0075c9;
+    }
+    to {
+        border-right-color: transparent;
     }
 }
 
