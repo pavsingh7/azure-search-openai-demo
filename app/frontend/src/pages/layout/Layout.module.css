@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .header {
     background-color: #007fc9;
     color: #f2f2f2;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .headerContainer {
@@ -37,7 +37,7 @@
     margin-left: 0.5rem;
     font-weight: 600;
     /* Increase font size */
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .headerNavList {
@@ -50,10 +50,10 @@
     right: 0;
     width: auto;
     list-style: none;
-    padding: 1.1rem;
+    padding: 1rem;
     align-items: flex-end;
     /* Increase font size */
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .headerNavList.show {
@@ -70,9 +70,7 @@
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     transition-duration: 500ms;
     transition-property: opacity;
-    font-size: 1.2rem;
-    /* Increase padding and font size */
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .headerNavPageLink:hover {
@@ -82,11 +80,9 @@
 .headerNavPageLinkActive {
     color: #f2f2f2;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: right;
     padding: 1rem;
-    /* Increase padding and font size */
-    font-size: 1.2rem;
 }
 
 .headerNavLeftMargin {
@@ -103,7 +99,7 @@
     background: none;
     border: none;
     color: #f2f2f2;
-    font-size: 1.5rem;
+    font-size: 1rem;
     cursor: pointer;
     z-index: 101;
 }
@@ -113,7 +109,7 @@
     align-items: center;
     gap: 0; /* Ensure no gap between login button and menu toggle */
     background-color: #1e1e1e; /* Modern blue background */
-    padding: 0.5rem 1rem; /* Add padding for a cleaner look */
+    padding: 0.01rem 0rem; /* Add padding for a cleaner look */
     border-radius: 0.5rem; /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
@@ -122,7 +118,7 @@
     background: none;
     border: none;
     color: #ffffff; /* White text color */
-    font-size: 1.2rem; /* Adjust font size as needed */
+    font-size: 1rem; /* Adjust font size as needed */
     cursor: pointer;
     padding: 0.5rem 1rem; /* Add padding for a cleaner look */
     border-radius: 0.5rem; /* Rounded corners */
@@ -137,7 +133,7 @@
     color: #ffb300; /* Replace with your desired color */
     /* You can also add more styles if needed */
     /* Increase font size */
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 @media (min-width: 992px) {
