@@ -79,9 +79,9 @@ const Layout = () => {
             </header>
 
             <Outlet />
-            <div className={styles.footer} style={{ fontWeight: "bold" }}>
+            {/* <div className={styles.footer} style={{ fontWeight: "bold" }}>
                 <Exit_Session />
-            </div>
+            </div> */}
         </div>
     );
 };
