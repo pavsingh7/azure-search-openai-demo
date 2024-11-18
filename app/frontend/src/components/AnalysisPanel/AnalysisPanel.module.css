@@ -1,12 +1,14 @@
 .thoughtProcess {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
     word-wrap: break-word;
-    padding-top: 0.75em;
-    padding-bottom: 0.75em;
+    padding-top: 0.5em; /* reduced padding */
+    padding-bottom: 0.5em;
+    max-height: 400px; /* limit height */
+    overflow-y: auto; /* add scrollbar only when needed */
 }
 
 .tList {
-    padding: 1.25em 1.25em 0 1.25em;
+    padding: 1em 1em 0 1em; /* reduced padding */
     display: inline-block;
     background: #e9e9e9;
 }
@@ -14,10 +16,10 @@
 .tListItem {
     list-style: none;
     margin: auto;
-    margin-left: 1.25em;
-    min-height: 3.125em;
+    margin-left: 1em; /* reduced margin */
+    min-height: 2.5em; /* reduced height */
     border-left: 0.0625em solid #0075c9;
-    padding: 0 0 1.875em 1.875em;
+    padding: 0 0 1.25em 1.25em; /* reduced padding */
     position: relative;
 }
 
