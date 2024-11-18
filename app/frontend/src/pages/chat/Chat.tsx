@@ -854,6 +854,7 @@ const Chat = () => {
                         )}
                     /> */}
 
+                    {useLogin}
                     {/* {useLogin && <TokenClaimsDisplay />} */}
                 </Panel>
             </div>
