@@ -169,9 +169,9 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
                                         disabled={deletionStatus[filename] === "pending" || deletionStatus[filename] === "success"}
                                     >
                                         {!deletionStatus[filename] && t("upload.deleteFile")}
-                                        {deletionStatus[filename] === "pending" && t("upload.deletingFile")}
-                                        {deletionStatus[filename] === "error" && t("upload.errorDeleting")}
-                                        {deletionStatus[filename] === "success" && t("upload.fileDeleted")}
+                                        {deletionStatus[filename] == "pending" && t("upload.deletingFile")}
+                                        {deletionStatus[filename] == "error" && t("upload.errorDeleting")}
+                                        {deletionStatus[filename] == "success" && t("upload.fileDeleted")}
                                     </Button>
                                 </div>
                             );
