@@ -5,7 +5,7 @@ param applicationInsightsDashboardName string = ''
 param location string = resourceGroup().location
 param tags object = {}
 @allowed([ 'Enabled', 'Disabled' ])
-param publicNetworkAccess string = 'Enabled'
+param publicNetworkAccess string = 'Disabled'
 
 module logAnalytics 'br/public:avm/res/operational-insights/workspace:0.4.0' = {
   name: 'loganalytics'
