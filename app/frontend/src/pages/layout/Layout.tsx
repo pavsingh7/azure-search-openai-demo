@@ -8,6 +8,7 @@ import { useLogin } from "../../authConfig";
 import { LoginButton } from "../../components/LoginButton";
 import { IconButton } from "@fluentui/react";
 import { Exit_Session } from "../../components/Exit_Session"; // Import the Exit_Session component
+import { WelcomePopup } from "../../components/WelcomePopup";
 
 const Layout = () => {
     const { t } = useTranslation();
@@ -37,11 +38,12 @@ const Layout = () => {
 
     return (
         <div className={styles.layout}>
+            <WelcomePopup />
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer} ref={menuRef}>
                     <Link to="/" className={styles.headerTitleContainer}>
                         <h3 className={styles.headerTitle}>
-                            SLS ActuarialGPT (<span className={styles.previewText}>Preview Version 2.0</span>)
+                            SLS ActuarialGPT (<span className={styles.previewText}>Preview 2.0</span>)
                         </h3>
                     </Link>
                     <nav>

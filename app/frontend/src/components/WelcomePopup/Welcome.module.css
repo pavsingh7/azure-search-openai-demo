@@ -1,0 +1,114 @@
+.dialogOverlay {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.dialogRoot {
+    max-width: 28.125rem; /* 450px */
+    min-width: 21.875rem; /* 350px */
+    background-color: #1e1e1e;
+    border-radius: 1rem; /* 16px */
+    box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.2); /* 4px 24px */
+    position: fixed !important;
+    left: 1.25rem !important; /* 20px */
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin-right: 1.25rem !important; /* 20px */
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+.dialogRoot[hidden] {
+    animation: slideOut 0.5s ease-in forwards;
+}
+
+.dialogTitle {
+    color: #ffffff !important;
+    font-size: 2rem !important; /* 32px */
+    font-weight: 600 !important;
+    margin-bottom: 1rem !important; /* 16px */
+    font-family: inherit !important;
+    text-align: left !important;
+}
+
+.dialogContent {
+    margin: 1.25rem 0; /* 20px */
+}
+
+.dialogText {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: 0.0125rem; /* 0.2px */
+}
+
+/* Add styles for markdown headings */
+.dialogText h2 {
+    color: #0078d4; /* Orange color for headers */
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Style for first h2 to remove top margin */
+.dialogText h2:first-child {
+    margin-top: 0;
+}
+
+.dialogButton {
+    transition: all 0.2s ease-in-out;
+}
+
+.dialogButton:hover {
+    transform: translateY(-1rem);
+}
+
+.button {
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    transition: background-color 0.2s ease;
+}
+
+.button:hover {
+    background-color: #ffb300;
+    cursor: pointer;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-100%, -50%);
+    }
+    to {
+        transform: translate(0, -50%);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translate(0, -50%);
+    }
+    to {
+        transform: translate(-100%, -50%);
+    }
+}
+
+@media (min-width: 62rem) and (max-height: 900px) {
+    .dialogRoot {
+        max-width: 25rem;
+        min-width: 18.75rem;
+    }
+
+    .dialogTitle {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .dialogText {
+        font-size: 0.5rem;
+    }
+
+    .button {
+        padding: 0.75rem 1.5rem;
+    }
+}
