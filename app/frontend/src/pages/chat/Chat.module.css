@@ -62,8 +62,6 @@ body {
     max-width: 64.25rem;
     width: 100%;
     overflow-y: auto;
-    /* padding-left: 1rem;
-    padding-right: 1rem; */
     padding: 0 2rem;
     display: flex;
     flex-direction: column;
@@ -84,7 +82,7 @@ body {
 
 .chatInput {
     position: sticky;
-    bottom: 10;
+    bottom: 0.625rem;
     flex: 0 0 6.25rem;
     padding: 0rem;
     width: 100%;
@@ -120,13 +118,13 @@ body {
 
 .leftCommands {
     display: flex; /* Keep the left buttons in a row */
-    gap: 10px; /* Space between left buttons */
-    padding-left: 15px; /* Add left padding for space */
+    gap: 0.625rem; /* Space between left buttons */
+    padding-left: 0.9375rem; /* Add left padding for space */
 }
 
 .rightCommands {
     display: flex; /* Keep the right buttons in a row */
-    gap: 0px; /* Space between right buttons */
+    gap: 0; /* Space between right buttons */
 }
 
 .commonButton {
@@ -147,8 +145,8 @@ body {
 
 /* For Webkit-based browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-    width: 8px; /* Width of the vertical scrollbar */
-    height: 8px; /* Height of the horizontal scrollbar */
+    width: 0.5rem; /* Width of the vertical scrollbar */
+    height: 0.5rem; /* Height of the horizontal scrollbar */
 }
 
 ::-webkit-scrollbar-track {
@@ -157,7 +155,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: #ffb300; /* Color of the scrollbar handle */
-    border-radius: 4px; /* Rounded corners */
+    border-radius: 0.25rem; /* Rounded corners */
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -168,41 +166,26 @@ body {
     background: #000000; /* Color of the corner where both scrollbars meet */
 }
 
-@media (min-width: 992px) {
-    .container {
-        margin-top: 1rem;
-        width: 100%;
-        height: 100%;
-        margin: 0; /* Remove top margin */
-    }
-
-    .chatEmptyState {
-        padding-top: 1.75rem;
-        width: 100%;
-        height: 100%;
-        padding-top: 1.75rem; /* Keep the padding if needed */
-    }
-
+@media (min-width: 62rem) and (max-height: 900px) {
     .chatEmptyStateTitle {
-        font-size: 4rem;
+        font-size: 2rem;
+    }
+
+    .chatMessageStream {
+        padding: 0 1rem;
     }
 
     .chatInput {
-        padding: 0.75rem 1.5rem 1.5rem;
+        max-width: 40rem;
+        padding: 0.5rem;
     }
 
-    .commandsContainer {
-        padding-left: 0rem;
-        padding-right: 0rem;
+    .commonButton {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
     }
 
-    .commandButton {
-        margin-right: 1.25rem;
-        margin-bottom: 1.25rem;
-    }
-
-    .chatMessageGpt {
-        max-width: 80%;
-        min-width: 31.25rem;
+    .chatContainer {
+        max-height: calc(100vh - 8rem);
     }
 }

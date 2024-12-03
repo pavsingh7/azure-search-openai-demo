@@ -1,22 +1,22 @@
 .supportingContentNavList {
     list-style: none;
-    padding-left: 0.3125em;
+    padding-left: 0.3125rem;
     display: flex;
     flex-direction: column;
-    gap: 0.625em;
+    gap: 0.625rem;
 }
 
 .supportingContentItem {
     word-break: break-word;
     background: rgb(249, 249, 249);
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
     box-shadow:
-        rgb(0 0 0 / 5%) 0px 0px 0px 0.0625em,
-        rgb(0 0 0 / 10%) 0px 0.125em 0.1875em 0px;
-    outline: transparent solid 0.0625em;
+        rgb(0 0 0 / 5%) 0 0 0 0.0625rem,
+        rgb(0 0 0 / 10%) 0 0.125rem 0.1875rem 0;
+    outline: transparent solid 0.0625rem;
     display: flex;
     flex-direction: column;
-    padding: 1.25em;
+    padding: 1.25rem;
 }
 
 .supportingContentItemHeader {
