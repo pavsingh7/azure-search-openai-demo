@@ -7,7 +7,7 @@
     animation:
         typing 5s steps(40, end),
         blink-caret 0.9s step-end infinite;
-    font-size: 6.5rem;
+    font-size: 4.5rem;
 }
 .complete {
     border-right: none;
