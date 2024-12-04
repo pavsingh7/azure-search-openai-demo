@@ -22,9 +22,9 @@
 
 .dialogTitle {
     color: #ffffff !important;
-    font-size: 2rem !important; /* 32px */
+    font-size: 1.5rem !important; /* 32px */
     font-weight: 600 !important;
-    margin-bottom: 1rem !important; /* 16px */
+    margin-bottom: 0.5rem !important; /* 16px */
     font-family: inherit !important;
     text-align: left !important;
 }
@@ -35,7 +35,7 @@
 
 .dialogText {
     color: #ffffff;
-    font-size: 1rem;
+    font-size: 0.8rem;
     line-height: 1.6;
     font-weight: 400;
     letter-spacing: 0.0125rem; /* 0.2px */
@@ -44,7 +44,7 @@
 /* Add styles for markdown headings */
 .dialogText h2 {
     color: #0078d4; /* Orange color for headers */
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 600;
 }
 
@@ -90,25 +90,5 @@
     }
     to {
         transform: translate(-100%, -50%);
-    }
-}
-
-@media (min-width: 62rem) and (max-height: 900px) {
-    .dialogRoot {
-        max-width: 25rem;
-        min-width: 18.75rem;
-    }
-
-    .dialogTitle {
-        font-size: 1.5rem !important;
-        margin-bottom: 0.75rem !important;
-    }
-
-    .dialogText {
-        font-size: 0.5rem;
-    }
-
-    .button {
-        padding: 0.75rem 1.5rem;
     }
 }

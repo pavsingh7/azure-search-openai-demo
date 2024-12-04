@@ -70,12 +70,12 @@ const Layout = () => {
                     </nav>
                     <div className={styles.loginMenuContainer}>
                         {useLogin && <LoginButton />}
-                        <IconButton
+                        {/* <IconButton
                             iconProps={{ iconName: "GlobalNavButton" }}
                             className={styles.menuToggle}
                             onClick={toggleMenu}
                             ariaLabel={t("labels.toggleMenu")}
-                        />
+                        /> */}
                     </div>
                 </div>
             </header>

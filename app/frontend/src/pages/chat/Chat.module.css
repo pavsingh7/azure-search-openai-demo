@@ -165,27 +165,3 @@ body {
 ::-webkit-scrollbar-corner {
     background: #000000; /* Color of the corner where both scrollbars meet */
 }
-
-@media (min-width: 62rem) and (max-height: 900px) {
-    .chatEmptyStateTitle {
-        font-size: 2rem;
-    }
-
-    .chatMessageStream {
-        padding: 0 1rem;
-    }
-
-    .chatInput {
-        max-width: 40rem;
-        padding: 0.5rem;
-    }
-
-    .commonButton {
-        font-size: 0.875rem;
-        padding: 0.375rem 0.75rem;
-    }
-
-    .chatContainer {
-        max-height: calc(100vh - 8rem);
-    }
-}

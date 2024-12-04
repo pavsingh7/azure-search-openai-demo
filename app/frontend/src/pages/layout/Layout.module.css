@@ -9,6 +9,7 @@
     background-color: #007fc9;
     color: #f2f2f2;
     font-size: 1rem;
+    max-height: 3rem;
 }
 
 .headerContainer {
@@ -49,7 +50,7 @@
     right: 0;
     width: auto;
     list-style: none;
-    padding: 1rem;
+    padding: 0.5rem;
     align-items: flex-end;
     font-size: 1rem;
 }
@@ -130,80 +131,4 @@
 .previewText {
     color: #ffb300;
     font-size: 1rem;
-}
-
-@media (min-width: 62rem) {
-    .headerTitle {
-        font-weight: 600;
-    }
-
-    .headerNavList {
-        display: flex;
-        flex-direction: row;
-        list-style: none;
-        padding: 0;
-        position: static;
-        width: auto;
-    }
-
-    .headerNavPageLink {
-        border-bottom: none;
-        padding: 0;
-        display: block;
-    }
-
-    .headerNavPageLink:hover {
-        opacity: 1;
-    }
-
-    .headerNavPageLinkActive {
-        color: #f2f2f2;
-        text-decoration: none;
-    }
-
-    .headerNavLeftMargin {
-        margin-left: 1.25rem;
-        display: block;
-    }
-
-    .headerRightText {
-        font-weight: normal;
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .githubLogo,
-    .microsoftLogo {
-        height: 1.25rem;
-        font-weight: 600;
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .menuToggle {
-        display: none;
-    }
-}
-
-@media (min-width: 62rem) and (max-height: 900px) {
-    .layout {
-        font-size: 0.875rem;
-    }
-
-    .headerTitle {
-        font-size: 0.875rem;
-    }
-
-    .headerNavPageLink {
-        font-size: 0.875rem;
-        padding: 0.5rem;
-    }
-
-    .headerLogo {
-        height: 1.5rem;
-    }
-
-    .headerContainer {
-        padding: 0.5rem 1rem;
-    }
 }
