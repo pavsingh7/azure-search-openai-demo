@@ -13,13 +13,13 @@ export const WelcomePopup = () => {
 
     const welcomeText = `
 ## Overview: Capabilities and Context
-This is a preview release version that gives you the ability to leverage to GPT4's capabilities for your daily tasks in a private capacity.
+This is a preview release version that gives you the ability to leverage to GPT4o's capabilities for your daily tasks in a private capacity.
 
 ## Feedback and Issues
 This release is in beta version, and we are working iteratively on improving the solution. If you see any discrepancies or issues, please provide feedback using button on the landing page.
 
 ## Upcoming Features: Release 3
-Coming soon, is the ability to user upload documents privately and localised to your username - i.e., only you will have the access to the document(s). Additionally, model evaluation and integrated vectorisation (streamlined and automated knowledge base uploads) will be incorporated in Release 3.0.
+Coming soon, is the ability to upload documents privately (and localised to your username), model evaluation and integrated vectorisation (streamlined and automated knowledge base uploads).
     `;
 
     const dialogContentProps = {
