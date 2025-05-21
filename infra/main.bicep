@@ -115,7 +115,7 @@ modelName: !empty(chatGptModelName)
 ? chatGptModelName
 : startsWith(openAiHost, 'azure') ? 'gpt-4o' : 'gpt-4o'
 deploymentName: !empty(chatGptDeploymentName) ? chatGptDeploymentName : 'chat'
-deploymentVersion: !empty(chatGptDeploymentVersion) ? chatGptDeploymentVersion : '2024-05-13'
+deploymentVersion: !empty(chatGptDeploymentVersion) ? chatGptDeploymentVersion : '2024-07-18'
 deploymentCapacity: chatGptDeploymentCapacity != 0 ? chatGptDeploymentCapacity : 57
 }
 
@@ -134,7 +134,7 @@ dimensions: embeddingDimensions != 0 ? embeddingDimensions : 1536
 
 param gpt4vModelName string = 'gpt-4o'
 param gpt4vDeploymentName string = 'gpt-4o'
-param gpt4vModelVersion string = '2024-05-13'
+param gpt4vModelVersion string = '2024-07-18'
 param gpt4vDeploymentCapacity int = 10
 
 param tenantId string = tenant().tenantId
